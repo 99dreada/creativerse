@@ -56,6 +56,9 @@ def retrieve_data(*tables):
         return _wrapper
     return _inner   
 
+"""
+Create forms
+"""
 def create_forms(*forms):
     def _inner(f):
         @wraps(f)
