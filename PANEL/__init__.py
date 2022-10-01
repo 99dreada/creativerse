@@ -27,3 +27,5 @@ def db_init():
     except: pass
     from PANEL.model import create_db
     create_db()
+
+app.cli.add_command(db_cli)
