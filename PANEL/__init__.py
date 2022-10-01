@@ -6,7 +6,7 @@ from PANEL.model import db
 
 app = Flask(__name__)
 
-def config_db(db_url='sqlite:///db/boticus.db'):
+def config_db(db_url='sqlite:///db/panel.db'):
     app.config['SQLALCHEMY_DATABASE_URI'] = db_url
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     if app.config.get('PROFILE', False): # pragma: no cover
