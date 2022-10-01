@@ -7,6 +7,9 @@ db=SQLAlchemy()
 DB TABLES
 """
 
+class Product_sql(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    Name = db.Column(db.String(20), unique=True, nullable=False)
 
 """
 INIT DATABASE
