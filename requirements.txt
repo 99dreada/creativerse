@@ -3,3 +3,5 @@ Flask-SQLAlchemy==2.5.1
 WTForms==3.0.1
 Flask-WTF==1.0.1
 wtforms_alchemy==0.18.0
+pyScss==1.4.0
+Flask-Assets==2.0

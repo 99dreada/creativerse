@@ -1,4 +1,5 @@
 from flask import Flask
+from flask_assets import Environment, Bundle
 from flask.cli import AppGroup
 import os
 
@@ -15,6 +16,16 @@ def config_db(db_url='sqlite:///db/panel.db'):
     app.secret_key = "#########"
     db.init_app(app)
 
+def config_sass():
+    #Converting Sass file to Css
+    scss = Bundle('scss/main.scss', filters='pyscss', output='styles/css/main.css')
+    #SCSS Connection
+    assets = Environment(app)
+    # assets.url= app.static_url_path
+    assets.debug=True
+    assets.register('scss_main', scss)
+
+config_sass()
 config_db()
 
 from PANEL import routes
