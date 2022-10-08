@@ -1,0 +1,18 @@
+//variables
+$navbar-background: #ffc307;
+$navbar-text: #fff;
+$navbar-hover: #0a5;
+$navbar-brand: #c56;
+
+//navbar
+.bg-navbar {
+    background: $navbar-background !important;
+}
+
+.navbar-nav .nav-link {
+    color: $navbar-text !important;
+}
+
+.navbar-brand {
+    color: $navbar-brand !important;
+}
