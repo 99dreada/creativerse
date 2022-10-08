@@ -1,5 +1,3 @@
-from asyncio import staggered
-from re import S
 from flask_sqlalchemy import SQLAlchemy
 
 db=SQLAlchemy()
@@ -8,29 +6,33 @@ db=SQLAlchemy()
 DB TABLES
 """
 
+class Process_sql(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    Name = db.Column(db.String(20), unique=True, nullable=False)
+    Description = db.Column(db.Text, unique=False, nullable=True)
+
 class Product_sql(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     Name = db.Column(db.String(20), unique=True, nullable=False)
-    Process = db.Column(db.Integer, unique=True, nullable=False)
+    Process = db.Column(db.Integer, db.ForeignKey(Process_sql.id), nullable=False)
     Stage = db.Column(db.Integer, unique=True, nullable=False)
     Machining = db.Column(db.Integer, unique=True, nullable=False)
     Processing = db.Column(db.Integer, unique=True, nullable=False)
     Packaging = db.Column(db.Integer, unique=True, nullable=False)
     Shipping = db.Column(db.Integer, unique=True, nullable=False)
 
-
 """
 INIT DATABASE
 """
 
 INIT_TABLES = [
-
+    Process_sql,
 ]
 
 INIT_DIRECTORY_NAME = "PANEL/db/initial"
 
 TABLES_TO_SAVE = [
-
+    Process_sql,
 ]
 
 def create_db():

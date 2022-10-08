@@ -41,7 +41,7 @@ ECHO Starting enviroment
 .\venv\Scripts\activate
 ECHO Installing dependancy
 pip install -r requirements.txt
-set FLASK_APP=CALCULATOR
+set FLASK_APP=PANEL
 set FLASK_DEBUG=1
 ECHO Setting up DB
 flask db init
@@ -66,7 +66,7 @@ if  errorlevel 1 goto ERROR
 
 :Envsetup
 ECHO Setting up enviroment
-set FLASK_APP=CALCULATOR
+set FLASK_APP=PANEL
 set FLASK_DEBUG=1
 pause
 GOTO menu2

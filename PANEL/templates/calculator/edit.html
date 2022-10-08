@@ -1,14 +1,14 @@
 {% extends 'base.html' %}
 {% block content %}
     <h1>Product {{ action_mode }}</h1>
-    {% from 'includes/_formhelpers.html' import render_field_grid, save_cancel, delete, render_delete_modal %}
+    {% from 'includes/_formhelpers.html' import render_field_grid, save_cancel, delete, render_delete_modal, render_select %}
     <form id="alert_form" method="POST" action="">
         <div class="row">
             <div class="col-lg-10">
                 <fieldset>
                     <legend><label>Basic Details</label></legend>
                     {{ render_field_grid(product_form.Name, class_="w-75") }}
-                    {{ render_field_grid(product_form.Process, class_="w-75") }}
+                    {{ render_select(product_form.Process, class_="w-75") }}
                     {{ render_field_grid(product_form.Stage, class_="w-75") }}
                     {{ render_field_grid(product_form.Machining, class_="w-75") }}
                     {{ render_field_grid(product_form.Processing, class_="w-75") }}
