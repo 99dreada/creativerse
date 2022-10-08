@@ -23,9 +23,9 @@ from PANEL.util import(
 calculator = Blueprint('calculator', __name__)
 
 @calculator.route('/list')
-def list():
-    products = Product_sql.query.all()
-    return render_template('calculator/list.html', title='List Products', products=products)
+@retrieve_data('list_products')
+def list(dbvalues):
+    return render_template('calculator/list.html', title='List Products', products=dbvalues['list_products'])
 
 @calculator.route("/create", methods=['GET','POST'])
 @create_forms('product_form')
@@ -54,7 +54,6 @@ def create(forms):
 @create_forms('product_form')
 def edit(Name, id, forms, dbvalues):
     forms_only_show = ['product_form']
-    product = Product_sql.query.get_or_404(id)
     if request.method == 'GET':
         form_from_db_fields(dbvalues['current_product'], forms['product_form'])
     elif bulk_validate(dict_except(forms, forms_only_show)):

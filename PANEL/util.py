@@ -6,6 +6,7 @@ from functools import wraps
 from PANEL import app
 from PANEL.model import(
     Process_sql,
+    Stage_sql,
     db,
     Product_sql,
 )
@@ -42,7 +43,14 @@ def retrieve_data(*tables):
         @wraps(f)
         def _wrapper(*args, **kwargs):
             def retrieve_products(**kwargs):
-                products = (db.session.query(Product_sql).all())
+                products = (
+                    db.session.query(
+                        Product_sql, Stage_sql, Process_sql,
+                    )
+                        .join(Stage_sql, Product_sql.Stage == Stage_sql.id)
+                        .join(Process_sql, Product_sql.Process == Process_sql.id)
+                        .all()
+                    )
                 return products
             def retrieve_current_product(id, **kwargs):
                 return Product_sql.query.get_or_404(id)
@@ -67,6 +75,7 @@ def create_forms(*forms):
             def create_product_form(**kwargs):
                 product_form = Product_Form(request.form)
                 product_form.Process.choices = _choices_with_blank(Process_sql)
+                product_form.Stage.choices = _choices_with_blank(Stage_sql)
                 return product_form
             mapping = {'product_form': create_product_form,
                       }

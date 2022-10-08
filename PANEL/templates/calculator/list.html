@@ -17,18 +17,20 @@
                 <thead>
                     <tr role="row" style="background-color: #bbb">
                         <th>Name</th>
-                        <th>Status</th>
+                        <th>Process</th>
+                        <th>Stage</th>
                         <th>Edit</th>
                     </tr>
                     {% for product in products %}
                     <tr rol="row" class="odd">
-                        <td>{{ product.Name }}</td>
-                        <td>{{ product.Status }}</td>
+                        <td>{{ product[0].Name }}</td>
+                        <td>{{ product[2].Name }}</td>
+                        <td>{{ product[1].Name }}</td>
                         <td>
                             <a class="btn btn-secondary" href="{{ url_for('calculator.edit', Name=product.Name) }}">Edit</a>
                         </td>
                     </tr>
-                    {%  endfor %}
+                    {% endfor %}
                 </thead>
             </table>
         </div>
