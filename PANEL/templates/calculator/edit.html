@@ -3,22 +3,56 @@
     <h1>Product {{ action_mode }}</h1>
     {% from 'includes/_formhelpers.html' import render_field_grid, save_cancel, delete, render_delete_modal, render_select %}
     <form id="alert_form" method="POST" action="">
-        <div class="row">
-            <div class="col-lg-10">
-                <fieldset>
-                    <legend><label>Basic Details</label></legend>
-                    {{ render_field_grid(product_form.Name, class_="w-75") }}
-                    {{ render_field_grid(product_form.Process, class_="w-75") }}
-                    {% if action_mode == 'Edit' %}
-                        {{ render_field_grid(product_form.Stage, class_="w-75") }}
-                    {% endif %}
-                    {{ render_field_grid(product_form.Machining, class_="w-75") }}
-                    {{ render_field_grid(product_form.Processing, class_="w-75") }}
-                    {{ render_field_grid(product_form.Packaging, class_="w-75") }}
-                    {{ render_field_grid(product_form.Shipping, class_="w-75") }}
-                </fieldset>
+        <fieldset>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Basic Details</h5>
+                            {{ render_field_grid(product_form.Name, class_="w-75") }}
+                            {{ render_field_grid(product_form.Process, class_="w-75") }}
+                            {{ render_field_grid(product_form.Stage, class_="w-75") }}
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
+            <hr>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Timings</h5>
+                                {{ render_field_grid(product_form.Machining, class_="w-75") }}
+                                {{ render_field_grid(product_form.Processing, class_="w-75") }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Materials</h5>
+                                {{ render_field_grid(product_form.Machining, class_="w-75") }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Postage</h5>
+                                {{ render_field_grid(product_form.Packaging, class_="w-75") }}
+                                {{ render_field_grid(product_form.Shipping, class_="w-75") }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+        <hr>
         <div class="row">
             {% if action_mode =='Edit' %}
                 {{ delete() }}
