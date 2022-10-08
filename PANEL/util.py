@@ -5,6 +5,7 @@ from flask_sqlalchemy import inspect
 from functools import wraps
 from PANEL import app
 from PANEL.model import(
+    Process_sql,
     db,
     Product_sql,
 )
@@ -65,6 +66,7 @@ def create_forms(*forms):
         def _wrapper(*args,**kwargs):
             def create_product_form(**kwargs):
                 product_form = Product_Form(request.form)
+                product_form.Process.choices = _choices_with_blank(Process_sql)
                 return product_form
             mapping = {'product_form': create_product_form,
                       }
@@ -74,6 +76,11 @@ def create_forms(*forms):
             return f(*args, forms=formObjs, **kwargs)
         return _wrapper
     return _inner
+
+def _choices_with_blank(sql_obj):
+    choices = db.session.query(sql_obj.id, sql_obj.Name).all()
+    choices = [(0, '')] + choices # prepend blank
+    return choices
 
 def natural_to_surrogate_key(SQLAlchemy_Obj, natural_kwname, natural_colname=None, surrogate_kwname=None, surrogate_colname='id'):
     if surrogate_kwname is None: surrogate_kwname = surrogate_colname
