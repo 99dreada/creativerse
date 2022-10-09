@@ -27,7 +27,7 @@
                         <td>{{ product[2].Name }}</td>
                         <td>{{ product[1].Name }}</td>
                         <td>
-                            <a class="btn btn-secondary" href="{{ url_for('calculator.edit', Name=product.Name) }}">Edit</a>
+                            <a class="btn btn-secondary" href="{{ url_for('calculator.edit', Name=product[0].Name) }}">Edit</a>
                         </td>
                     </tr>
                     {% endfor %}

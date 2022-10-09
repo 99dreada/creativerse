@@ -20,10 +20,10 @@ class Product_sql(db.Model):
     Name = db.Column(db.String(20), unique=True, nullable=False)
     Process = db.Column(db.Integer, db.ForeignKey(Process_sql.id), nullable=False)
     Stage = db.Column(db.Integer, db.ForeignKey(Process_sql.id), nullable=False)
-    Machining = db.Column(db.Integer, unique=True, nullable=False)
-    Processing = db.Column(db.Integer, unique=True, nullable=False)
-    Packaging = db.Column(db.Integer, unique=True, nullable=False)
-    Shipping = db.Column(db.Integer, unique=True, nullable=False)
+    Machining = db.Column(db.Integer, nullable=False)
+    Processing = db.Column(db.Integer, nullable=False)
+    Packaging = db.Column(db.Integer, nullable=False)
+    Shipping = db.Column(db.Integer, nullable=False)
 
 """
 INIT DATABASE
