@@ -36,7 +36,8 @@ INIT DATABASE
 
 INIT_TABLES = [
     Process_sql,
-    Stage_sql
+    Stage_sql,
+    Settings_sql,
 ]
 
 INIT_DIRECTORY_NAME = "PANEL/db/initial"

@@ -9,6 +9,7 @@ from PANEL.model import(
     Process_sql,
     Stage_sql,
     Product_sql,
+    Settings_sql,
 )
 from PANEL.forms import(
     Product_Form,
@@ -55,9 +56,12 @@ def retrieve_data(*tables):
                 return products
             def retrieve_current_product(id, **kwargs):
                 return Product_sql.query.get_or_404(id)
+            def retrieve_settings(**kwargs):
+                return Settings_sql.query.get_or_404()
             mapping = {
                 'list_products': retrieve_products,
                 'current_product': retrieve_current_product,
+                'current_settings': retrieve_settings,
             }
             stored_records={}
             for table in tables:
