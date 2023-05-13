@@ -5,13 +5,14 @@ from flask_sqlalchemy import inspect
 from functools import wraps
 from PANEL import app
 from PANEL.model import(
+    db,
     Process_sql,
     Stage_sql,
-    db,
     Product_sql,
 )
 from PANEL.forms import(
-    Product_Form
+    Product_Form,
+    Settings_Form,
 )
 
 @app.template_filter('dict_but')
@@ -77,7 +78,10 @@ def create_forms(*forms):
                 product_form.Process.choices = _choices_with_blank(Process_sql)
                 product_form.Stage.choices = _choices_with_blank(Stage_sql)
                 return product_form
+            def create_settings_form(**kwargs):
+                return Settings_Form
             mapping = {'product_form': create_product_form,
+                       'settings_form': create_settings_form
                       }
             formObjs = {}
             for form in forms:

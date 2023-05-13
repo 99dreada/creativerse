@@ -25,6 +25,11 @@ class Product_sql(db.Model):
     Packaging = db.Column(db.Integer, nullable=False)
     Shipping = db.Column(db.Integer, nullable=False)
 
+class Settings_sql(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    Name = db.Column(db.String(20), unique=True, nullable=False)
+    Value = db.Column(db.Integer, nullable=False)
+
 """
 INIT DATABASE
 """
@@ -37,7 +42,6 @@ INIT_TABLES = [
 INIT_DIRECTORY_NAME = "PANEL/db/initial"
 
 TABLES_TO_SAVE = [
-
 ]
 
 def create_db():

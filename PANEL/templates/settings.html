@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Creativerse</h1>
+    {% from 'includes/_formhelpers.html' import render_field_grid %}
+    <form id="settings_form" method="POST" action="">
+        <fieldset>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Basic Settings</h5>
+                            {{ render_field_grid(settings_form.Name, class_="w-75") }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+    {% if action_mode == 'Edit' %}
+        {{ render_delete_modal('calculator', Name=name) }}
+    {% endif %}
+{% endblock %}

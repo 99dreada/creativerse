@@ -37,7 +37,7 @@ def create(forms):
         try:
             new_product = form_to_db_fields(Product_sql, forms['product_form'])
             db.session.commit()
-            flash(f"Product {new_product.Name} has been successfully added ", "success",)
+            flash(f"Product {new_product.Name} has been successfully added ", "success")
             return redirect(url_for('.list'))
         except Exception as e: # pragma: no cover
             flash(f"Product creation not successful.\nError: {e}", "danger")
