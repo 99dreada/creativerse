@@ -28,3 +28,4 @@ def index():
     return render_template('index.html')
 
 app.register_blueprint(PANEL.blueprints.calculator, url_prefix='/calculator')
+app.register_blueprint(PANEL.blueprints.material_inv, url_prefix='/material_inv')
