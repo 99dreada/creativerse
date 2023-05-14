@@ -29,3 +29,7 @@ def index():
 
 app.register_blueprint(PANEL.blueprints.calculator, url_prefix='/calculator')
 app.register_blueprint(PANEL.blueprints.material_inv, url_prefix='/material_inv')
+app.register_blueprint(PANEL.blueprints.product_inv, url_prefix='/product_inv')
+app.register_blueprint(PANEL.blueprints.product_status, url_prefix='/product_status')
+app.register_blueprint(PANEL.blueprints.sales_stats, url_prefix='/sales_stats')
+app.register_blueprint(PANEL.blueprints.settings, url_prefix='/settings')

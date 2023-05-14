@@ -6,22 +6,22 @@
   <div class="collapse navbar-collapse" id="navbarCollapse">
     <ul class="navbar-nav justify-content-end">
       <li class="nav-item active">
-          <a class="nav-link" href="">Product Inventory</a>
+          <a class="nav-link" href="{{ url_for('product_inv.index') }}">Product Inventory</a>
       </li>
       <li class="nav-item active">
-          <a class="nav-link" href="">Material Inventory</a>
+          <a class="nav-link" href="{{ url_for('material_inv.index') }}">Material Inventory</a>
       </li>
       <li class="nav-item active">
-          <a class="nav-link" href="">Sales Stats</a>
+          <a class="nav-link" href="{{ url_for('sales_stats.index') }}">Sales Stats</a>
       </li>
       <li class="nav-item active">
-          <a class="nav-link" href="{{ url_for('calculator.list') }}">Calculator</a>
+          <a class="nav-link" href="{{ url_for('calculator.index') }}">Calculator</a>
       </li>
       <li class="nav-item active">
-          <a class="nav-link" href="">Product Status</a>
+          <a class="nav-link" href="{{ url_for('product_status.index') }}">Product Status</a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href="">Settings</a>
+        <a class="nav-link" href="{{ url_for('settings.index') }}">Settings</a>
       </li>
     </ul>
   </div>
